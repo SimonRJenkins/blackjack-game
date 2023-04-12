@@ -1,3 +1,30 @@
+function changeBackground(color) {
+    let body = document.querySelector("body");
+    if (color === "green") {
+        body.style.backgroundImage = "url('images/greentable.png')";
+    } else if (color === "red") {
+        body.style.backgroundImage = "url('images/redtable.jpg')";
+    } else if (color === "blue") {
+        body.style.backgroundImage = "url('images/bluetable.jpg')";
+    }
+}
+
+function loadBackground() {
+    let body = document.querySelector("body");
+    let randomNumber = Math.floor(Math.random() * 3) + 1;
+
+    if (randomNumber === 1) {
+        body.style.backgroundImage = "url('images/greentable.png')";
+    } else if (randomNumber === 2) {
+        body.style.backgroundImage = "url('images/redtable.jpg')";
+    } else {
+        body.style.backgroundImage = "url('images/bluetable.jpg')";
+    }
+}
+
+loadBackground()
+changeBackground();
+
 let player = {
     name: "Simon",
     chips: 200
@@ -15,12 +42,12 @@ let playerEl = document.getElementById("player-el")
 
 playerEl.textContent = player.name + ": $" + player.chips
 
-/* function addChips() {
+/* function addChips() { //For Testing
     player.chips += 10
     playerEl.textContent = player.name + ": $" + player.chips
 }
-
-function removeChips() {
+ 
+function removeChips() { //For Testing
     player.chips -= 10
     playerEl.textContent = player.name + ": $" + player.chips
 } */
