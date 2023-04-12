@@ -15,6 +15,16 @@ let playerEl = document.getElementById("player-el")
 
 playerEl.textContent = player.name + ": $" + player.chips
 
+/* function addChips() {
+    player.chips += 10
+    playerEl.textContent = player.name + ": $" + player.chips
+}
+
+function removeChips() {
+    player.chips -= 10
+    playerEl.textContent = player.name + ": $" + player.chips
+} */
+
 function getRandomCard() {
     let randomNumber = Math.floor(Math.random() * 13) + 1
     if (randomNumber > 10) {
@@ -28,12 +38,20 @@ function getRandomCard() {
 }
 
 function startGame() {
-    isAlive = true
-    let firstCard = getRandomCard();
-    let secondCard = getRandomCard();
-    cards = [firstCard, secondCard]
-    sum = firstCard + secondCard
-    renderGame()
+    if (player.chips >= 10) {
+        hasBlackJack = false
+        isAlive = true
+        let firstCard = getRandomCard();
+        let secondCard = getRandomCard();
+        cards = [firstCard, secondCard]
+        sum = firstCard + secondCard
+        renderGame()
+    } else {
+        message = "You don't have enough chips to play Blackjack!"
+        messageEl.textContent = message
+        cardsEl.textContent = "Cards: ";
+        sumEl.textContent = "Sum: ";
+    }
 }
 
 function renderGame() {
@@ -48,12 +66,16 @@ function renderGame() {
         message = "Do you want to draw a new card?"
     }
     else if (sum === 21) {
-        message = "You've got Blackjack!"
+        message = "You've got Blackjack and have won 10 chips!"
+        player.chips += 10;
+        playerEl.textContent = player.name + ": $" + player.chips
         hasBlackJack = true
     }
     else {
-        message = "You're out of the game!"
         isAlive = false
+        message = "You're out of the game and have lost 10 chips!"
+        player.chips -= 10;
+        playerEl.textContent = player.name + ": $" + player.chips
     }
     messageEl.textContent = message
 }
