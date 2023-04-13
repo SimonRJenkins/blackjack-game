@@ -1,7 +1,7 @@
 function changeBackground(color) {
     let body = document.querySelector("body");
     if (color === "green") {
-        body.style.backgroundImage = "url('images/greentable.png')";
+        body.style.backgroundImage = "url('images/table.png')";
     } else if (color === "red") {
         body.style.backgroundImage = "url('images/redtable.jpg')";
     } else if (color === "blue") {
@@ -21,6 +21,7 @@ function loadBackground() {
         body.style.backgroundImage = "url('images/bluetable.jpg')";
     }
 }
+
 
 loadBackground()
 changeBackground();
